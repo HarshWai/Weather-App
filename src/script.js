@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (sunsetElement) sunsetElement.textContent = `Sunset: ${formatTime(sunsetTime)}`;
 
         if (weatherIcon) weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-        if (locationButton) locationButton.textContent = `📍 ${data.name}`;
+        if (locationButton) locationButton.textContent = ` ${data.name}`;
     }
 
     // 5-Day Forecast Data
