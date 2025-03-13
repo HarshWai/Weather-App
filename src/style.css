@@ -1,0 +1,232 @@
+body {
+    background: linear-gradient(to right, #5a5a5a, #000000);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card {
+    background-color: #2a2a2a;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8),
+        -4px -4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.search-bar {
+    /* background-color: #333; */
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 40%;
+    border-radius: 20px;
+}
+
+.city-time .card,
+.weather-details .card {
+    min-height: 250px;
+}
+
+.city-time .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #2D2D2D;
+    color: white;
+    border-radius: 12px;
+    min-height: 300px;
+}
+
+.current-location {
+    background-color: #28a745;
+    color: white;
+    border-radius: 20px;
+}
+
+.weather-icons p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.forecast-item,
+.forecast-item1 {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 30px;
+    min-width: 120px;
+    min-height: 150px;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 5px 0;
+}
+
+h3 {
+    font-size: 35px;
+    font-style: bold;
+}
+
+.light-mode {
+    background: linear-gradient(to right, #ffffff, #000000);
+    color: black;
+}
+
+.light-mode .card {
+    background-color: #D9D9D9 !important;
+    color: #000 !important;
+
+}
+
+.light-mode .search-bar {
+    background-color: #e0e0e0;
+    color: black;
+}
+
+.light-mode .forecast-item {
+    background-color: #f88508;
+    background-image: linear-gradient(165deg, #f88508 0%, #ffffff 99%);
+    border: 1px solid #ddd;
+}
+
+.light-mode .forecast-item1 {
+    background-color: #443d64;
+    background-image: linear-gradient(165deg, #443d64 0%, #ffffff 99%);
+    border: 1px solid #ddd;
+}
+
+.light-mode .current-location {
+    background-color: #28a745;
+    color: white;
+}
+
+.sun-icon {
+    height: 200px;
+    color: #FFD700;
+}
+
+.degree-text {
+    font-size: 70px;
+    font-style: bold;
+
+}
+
+#live-time {
+    font-size: 50px;
+    font-style: bold;
+}
+
+.sunset-icon {
+    height: 40px;
+}
+
+.light-mode .sunset-icon {
+    height: 40px;
+    color: white;
+}
+
+.weather-hand {
+    height: 70px;
+}
+
+.forecast-image {
+    height: 40px;
+}
+
+.sunrise,
+.sunset {
+    white-space: nowrap;
+
+}
+
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 10px;
+    }
+
+    .d-flex.justify-content-between {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-bar {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .current-location {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .degree-text {
+        font-size: 50px;
+    }
+
+    .weather-details .card {
+        padding: 10px;
+    }
+
+    .city-time .card {
+        min-height: 200px;
+    }
+
+    .forecast-item,
+    .forecast-item1 {
+        min-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .forecast-image {
+        height: 30px;
+    }
+
+    .sun-icon {
+        height: 120px;
+    }
+
+    .sunset-icon {
+        height: 30px;
+    }
+
+    .weather-hand {
+        height: 50px;
+    }
+
+    .forecast-image {
+        height: 30px;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .degree-text {
+        font-size: 40px;
+    }
+
+    #live-time {
+        font-size: 40px;
+    }
+
+    .search-bar,
+    .current-location {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .forecast-item,
+    .forecast-item1 {
+        min-height: 120px;
+        padding: 5px;
+    }
+
+    .forecast-image {
+        height: 25px;
+    }
+}
