@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const body = document.body;
     const searchBar = document.querySelector(".search-bar");
     const locationButton = document.getElementById("current-location-btn");
-    const apiKey = "1a02ea3b91e7fc7af1a2dd0ed911e959"; // 🔴 Your OpenWeatherMap API Key
+    const apiKey = "1a02ea3b91e7fc7af1a2dd0ed911e959"; // API Key
 
 
-    // 🌙 Dark Mode Functionality
+    //  Dark Mode Functionality
     if (localStorage.getItem("darkMode") === "enabled") {
         body.classList.add("light-mode");
         darkModeSwitch.checked = true;
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // 🕒 Live Date & Time
+    //  Live Date & Time
     function updateDateTime() {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, "0");
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // 🌍 Get Weather by Current Location
+    //  Current Location
     locationButton.addEventListener("click", () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -66,13 +66,13 @@ document.addEventListener("DOMContentLoaded", function () {
         fetchWeatherData(url);
     }
 
-    // 🔍 Fetch Weather Data by City Name
+    // Weather Data by City Name
     function fetchWeatherDataByCity(city) {
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
         fetchWeatherData(url);
     }
 
-    // 📡 Fetch Data from API
+    //  Data from API
     function fetchWeatherData(url) {
         fetch(url)
             .then((response) => {
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // 🌦 Update UI with Weather Data
+    //  Update UI with Weather Data
     function updateWeatherUI(data) {
         if (!data || !data.main || !data.weather || !data.sys) {
             console.error("Invalid weather data:", data);
@@ -132,12 +132,12 @@ document.addEventListener("DOMContentLoaded", function () {
             weatherIcon.src = weatherMapping[weatherType] || "default.png"; // Default if condition not listed
         }
 
-        // 🌅 Convert sunrise & sunset using timezone offset
+        //  sunrise & sunset using timezone 
         const timezoneOffset = data.timezone; // Offset in seconds
         const sunriseTime = new Date((data.sys.sunrise + timezoneOffset) * 1000);
         const sunsetTime = new Date((data.sys.sunset + timezoneOffset) * 1000);
 
-        // ✅ Format time to "06:03 AM" or "03:02 PM"
+        // Format time to "06:03 AM" or "03:02 PM"
         function formatTime(date) {
             let hours = date.getUTCHours();
             let minutes = date.getUTCMinutes();
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (locationButton) locationButton.textContent = `📍 ${data.name}`;
     }
 
-    // 🌦 Fetch 5-Day Forecast Data
+    // 5-Day Forecast Data
     function fetchFiveDayForecast(city) {
         const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
 
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch((error) => console.error("Error fetching forecast:", error));
     }
 
-    // 📅 Update 5-Day Forecast UI
+    // 5-Day Forecast UI
     function updateForecastUI(forecastData) {
         const forecastItems = document.querySelectorAll(".row.forecast .col-md-3.mt-3, .row.forecast .col-md-7.mt-3");
 
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const dailyForecasts = [];
 
-        // 📌 Extract relevant data (one forecast per day)
+        //  Extract relevant data (one forecast per day)
         forecastData.list.forEach((entry) => {
             const date = new Date(entry.dt * 1000);
             const day = date.toLocaleDateString("en-GB", { weekday: "long" });
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // 🏗️ Update temperature and date while keeping images
+        //  Update temperature and date while keeping images
         dailyForecasts.slice(0, 5).forEach((data, index) => {
             forecastItems[index * 2].textContent = `${data.temp}°C`; // Temperature
             forecastItems[index * 2 + 1].textContent = `${data.day}, ${data.date}`; // Day & Date
@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    // ✨ Modify existing fetch function to include forecast fetch
+    // Modify existing fetch function to include forecast fetch
     function fetchWeatherData(url) {
         fetch(url)
             .then((response) => {
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let forecastItem = "";
 
             if (index === 3) {
-                // ✅ Keep 4th container (21:00) unchanged with hardcoded images
+                // Keep 4th container (21:00) unchanged with hardcoded images
                 forecastItem = `
                 <div class="forecast-item1 text-center">
                     <p>21:00</p>
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
             } else {
-                // ✅ Update dynamically for other containers
+                // Update dynamically for other containers
                 forecastItem = `
                 <div class="forecast-item text-center">
                     <p>${time}</p>
@@ -281,14 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
-
-
-
-
-
-
-    // ⌨️ Search Bar - Press Enter to Fetch Weather
+    //  Search Bar - Press Enter to Fetch Weather
     searchBar.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             const city = searchBar.value.trim();
