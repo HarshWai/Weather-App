@@ -294,4 +294,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(updateDateTime, 1000);
     updateDateTime();
+
+    function updateRunCount() {
+        let runCount = localStorage.getItem("runCount") || 0;
+        runCount = parseInt(runCount) + 1;
+        localStorage.setItem("runCount", runCount);
+
+        // Create a div to display the count
+        let countDisplay = document.getElementById("run-count-display");
+        if (!countDisplay) {
+            countDisplay = document.createElement("div");
+            countDisplay.id = "run-count-display";
+            countDisplay.style.position = "fixed";
+            countDisplay.style.bottom = "10px";
+            countDisplay.style.right = "10px";
+            countDisplay.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+            countDisplay.style.color = "white";
+            countDisplay.style.padding = "10px 15px";
+            countDisplay.style.borderRadius = "10px";
+            countDisplay.style.fontSize = "14px";
+            countDisplay.style.zIndex = "1000";
+            document.body.appendChild(countDisplay);
+        }
+
+        // Update the text content
+        countDisplay.textContent = `Live Runs: ${runCount}`;
+    }
+
+    updateRunCount(); // Call function to update count on every page load
 });
